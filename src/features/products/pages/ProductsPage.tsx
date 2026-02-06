@@ -87,9 +87,9 @@ export function ProductsPage() {
       sortable: true,
       render: (_, product: Product) => (
         <div className="flex items-center gap-3">
-          {product.images[0] && (
+          {product.primary_image && (
             <img
-              src={product.images[0].url}
+              src={product.primary_image.url}
               alt={product.name}
               className="w-10 h-10 rounded-lg object-cover border border-sage-whisper"
             />

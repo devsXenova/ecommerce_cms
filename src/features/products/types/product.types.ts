@@ -15,7 +15,8 @@ export interface Product {
     id: number
     name: string
   }
-  images: ProductImage[]
+  images?: ProductImage[]
+  primary_image?: ProductImage | null
   is_active: boolean
   is_featured: boolean
   created_at: string

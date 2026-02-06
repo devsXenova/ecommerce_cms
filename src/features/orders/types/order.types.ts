@@ -5,6 +5,7 @@
 
 export enum OrderStatus {
   PENDING = 'pending',
+  CONFIRMED = 'confirmed',
   PROCESSING = 'processing',
   SHIPPED = 'shipped',
   DELIVERED = 'delivered',
@@ -14,9 +15,14 @@ export enum OrderStatus {
 
 export enum PaymentStatus {
   PENDING = 'pending',
+  PROCESSING = 'processing',
   PAID = 'paid',
+  APPROVED = 'approved',
   FAILED = 'failed',
+  REJECTED = 'rejected',
+  CANCELLED = 'cancelled',
   REFUNDED = 'refunded',
+  PARTIALLY_REFUNDED = 'partially_refunded',
 }
 
 export interface OrderCustomer {
@@ -50,10 +56,10 @@ export interface ShippingAddress {
 
 export interface OrderStatusHistory {
   id: number
-  status: OrderStatus
+  status: string
   notes?: string
   created_at: string
-  created_by?: string
+  changed_by?: number
 }
 
 export interface Order {

@@ -10,8 +10,7 @@ import CategoriesPage from '@/features/categories/pages/CategoriesPage'
 import { ReportsPage } from '@/features/reports'
 import { SettingsPage } from '@/features/settings'
 import { ShippingPage } from '@/features/shipping'
-import { ProtectedRoute } from './ProtectedRoute'
-import { AdminLayout } from '@/components/layout/AdminLayout/AdminLayout'
+import { RootLayout } from './RootLayout'
 
 const router = createBrowserRouter([
   {
@@ -20,11 +19,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/',
-    element: (
-      <ProtectedRoute>
-        <AdminLayout />
-      </ProtectedRoute>
-    ),
+    element: <RootLayout />,
     children: [
       {
         index: true,

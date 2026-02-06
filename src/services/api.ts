@@ -33,14 +33,15 @@ export function getRefreshToken(): string | undefined {
  * Set auth tokens in cookies
  */
 export function setAuthTokens(accessToken: string, refreshToken: string): void {
+  const isSecure = window.location.protocol === 'https:'
   Cookies.set(TOKEN_KEYS.ACCESS_TOKEN, accessToken, {
     expires: 7, // 7 days
-    secure: true,
+    secure: isSecure,
     sameSite: 'strict',
   })
   Cookies.set(TOKEN_KEYS.REFRESH_TOKEN, refreshToken, {
     expires: 30, // 30 days
-    secure: true,
+    secure: isSecure,
     sameSite: 'strict',
   })
 }
@@ -93,7 +94,33 @@ const processQueue = (error: AxiosError | null, token: string | null = null) => 
 }
 
 apiClient.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    const apiData = response.data
+    if (apiData && typeof apiData === 'object' && 'success' in apiData) {
+      if (apiData.pagination) {
+        response.data = {
+          data: apiData.data,
+          meta: {
+            current_page: apiData.pagination.current_page,
+            per_page: apiData.pagination.per_page,
+            total: apiData.pagination.total,
+            last_page: apiData.pagination.total_pages,
+            from: apiData.pagination.from,
+            to: apiData.pagination.to,
+          },
+          links: {
+            first: null,
+            last: null,
+            prev: null,
+            next: null,
+          },
+        }
+      } else {
+        response.data = apiData.data
+      }
+    }
+    return response
+  },
   async (error: AxiosError) => {
     const originalRequest = error.config as InternalAxiosRequestConfig & { _retry?: boolean }
 
@@ -125,11 +152,11 @@ apiClient.interceptors.response.use(
       }
 
       try {
-        const { data } = await axios.post(`${API_BASE_URL}/auth/refresh`, {
+        const { data: responseData } = await axios.post(`${API_BASE_URL}/auth/refresh`, {
           refresh_token: refreshToken,
         })
 
-        const { access_token, refresh_token: newRefreshToken } = data
+        const { access_token, refresh_token: newRefreshToken } = responseData.data || responseData
 
         setAuthTokens(access_token, newRefreshToken)
 

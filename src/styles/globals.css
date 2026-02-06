@@ -126,7 +126,8 @@
 
 @layer base {
   body {
-    @apply bg-background text-foreground;
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
     font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -467,11 +468,29 @@
 
 /* ===== Focus Ring Improvements ===== */
 .focus-ring {
-  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-black focus-visible:ring-offset-2 dark:focus-visible:ring-sage-gold;
+  outline: none;
+}
+
+.focus-ring:focus-visible {
+  outline: none;
+  ring: 2px;
+  ring-color: rgb(var(--sage-black));
+  ring-offset: 2px;
+}
+
+.dark .focus-ring:focus-visible {
+  ring-color: rgb(var(--sage-gold));
 }
 
 .focus-ring-gold {
-  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-gold focus-visible:ring-offset-2;
+  outline: none;
+}
+
+.focus-ring-gold:focus-visible {
+  outline: none;
+  ring: 2px;
+  ring-color: rgb(var(--sage-gold));
+  ring-offset: 2px;
 }
 
 /* ===== Smooth Transitions ===== */

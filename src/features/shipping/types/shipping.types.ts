@@ -12,10 +12,13 @@
  */
 export enum ShippingStatus {
   PENDING = 'pending',
+  PROCESSING = 'processing',
   SHIPPED = 'shipped',
   IN_TRANSIT = 'in_transit',
+  OUT_FOR_DELIVERY = 'out_for_delivery',
   DELIVERED = 'delivered',
-  FAILED = 'failed'
+  FAILED = 'failed',
+  RETURNED = 'returned',
 }
 
 /**

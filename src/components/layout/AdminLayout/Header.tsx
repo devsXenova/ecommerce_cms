@@ -1,8 +1,10 @@
 import { LogOut, User } from 'lucide-react'
 import { useAuth } from '@/features/auth/context/AuthContext'
+import { useLogout } from '@/features/auth/hooks/useLogout'
 
 export function Header() {
-  const { user, logout } = useAuth()
+  const { user } = useAuth()
+  const logout = useLogout()
 
   return (
     <header className="h-16 bg-white border-b border-sage-gray-200 fixed top-0 right-0 left-64 z-10">

@@ -1,5 +1,4 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { createContext, useContext, useState, useEffect, ReactNode, useCallback } from 'react'
 import { authService } from '../services/auth.service'
 import { AuthContextType, LoginCredentials, AuthUser } from '../types/auth.types'
 import { getAccessToken } from '@/services/api'
@@ -9,39 +8,40 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined)
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null)
   const [isLoading, setIsLoading] = useState(true)
-  const navigate = useNavigate()
 
   useEffect(() => {
     const initAuth = async () => {
-      const token = getAccessToken()
+      try {
+        const token = getAccessToken()
 
-      if (token) {
-        try {
-          const currentUser = await authService.getCurrentUser()
-          setUser(currentUser)
-        } catch (error) {
-          authService.clearTokens()
+        if (token) {
+          try {
+            const currentUser = await authService.getCurrentUser()
+            setUser(currentUser)
+          } catch (error) {
+            authService.clearTokens()
+          }
         }
+      } catch (error) {
+        console.error('Error initializing auth:', error)
+      } finally {
+        setIsLoading(false)
       }
-
-      setIsLoading(false)
     }
 
     initAuth()
   }, [])
 
-  const login = async (credentials: LoginCredentials) => {
+  const login = useCallback(async (credentials: LoginCredentials) => {
     const response = await authService.login(credentials)
     authService.setTokens(response.access_token, response.refresh_token)
     setUser(response.user)
-    navigate('/dashboard')
-  }
+  }, [])
 
-  const logout = () => {
+  const logout = useCallback(() => {
     authService.logout()
     setUser(null)
-    navigate('/login')
-  }
+  }, [])
 
   return (
     <AuthContext.Provider
