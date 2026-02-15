@@ -14,7 +14,7 @@ const cardVariants = cva(
         elevated:
           'bg-card shadow-elegant-lg hover:shadow-gold',
         glass:
-          'glass border border-sage-gray-200/30 shadow-elegant-lg dark:glass-dark',
+          'glass border border-sage-gray-200/30 shadow-elegant-lg',
         outline:
           'border-2 border-sage-gray-300 bg-card hover:border-sage-black transition-sophisticated',
         flat:
@@ -64,7 +64,7 @@ const CardTitle = forwardRef<HTMLHeadingElement, HTMLAttributes<HTMLHeadingEleme
   ({ className, ...props }, ref) => (
     <h3
       ref={ref}
-      className={cn('text-xl font-semibold leading-none tracking-tight text-sage-black', className)}
+      className={cn('text-xl font-semibold leading-none tracking-tight text-card-foreground', className)}
       {...props}
     />
   )
@@ -75,7 +75,7 @@ const CardDescription = forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLPara
   ({ className, ...props }, ref) => (
     <p
       ref={ref}
-      className={cn('text-sm text-sage-gray-600 leading-relaxed', className)}
+      className={cn('text-sm leading-relaxed text-muted-foreground', className)}
       {...props}
     />
   )

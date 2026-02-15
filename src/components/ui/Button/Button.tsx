@@ -15,13 +15,13 @@ const buttonVariants = cva(
         secondary:
           'bg-sage-gray-700 text-sage-white shadow-elegant hover:shadow-elegant-lg hover:bg-sage-gray-600 focus-visible:ring-sage-gray-700',
         outline:
-          'border-2 border-sage-gray-300 bg-background text-sage-black hover:bg-sage-gray-50 hover:border-sage-black focus-visible:ring-sage-black transition-sophisticated',
+          'border-2 border-border bg-background text-foreground hover:bg-muted hover:border-sage-gold/45 focus-visible:ring-ring transition-sophisticated',
         ghost:
-          'text-sage-black hover:bg-sage-gray-100 focus-visible:ring-sage-black transition-sophisticated',
+          'text-foreground hover:bg-muted focus-visible:ring-ring transition-sophisticated',
         danger:
           'bg-destructive text-sage-white shadow-elegant hover:shadow-elegant-lg hover:bg-destructive/90 focus-visible:ring-destructive',
         link:
-          'text-sage-black underline-offset-4 hover:underline focus-visible:ring-sage-black',
+          'text-foreground underline-offset-4 hover:underline focus-visible:ring-ring',
       },
       size: {
         sm: 'h-9 px-3 text-sm',

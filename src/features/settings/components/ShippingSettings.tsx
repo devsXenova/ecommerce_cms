@@ -16,7 +16,6 @@ import {
 import { Input } from '@/components/ui/input';
 import { useSettings } from '../hooks/useSettings';
 import { useUpdateSettings } from '../hooks/useUpdateSettings';
-import type { ShippingSettings } from '../types/settings.types';
 
 const shippingSettingsSchema = z.object({
   andreaniUsername: z.string().min(1, 'Username is required'),
@@ -48,9 +47,9 @@ export function ShippingSettings() {
   }
 
   return (
-    <Card className="border-sage-200">
+      <Card className="border-sage-gray-200">
       <CardHeader>
-        <CardTitle className="text-sage-900 flex items-center gap-2">
+        <CardTitle className="flex items-center gap-2 text-foreground">
           <Truck className="h-5 w-5 text-gold-600" />
           Shipping Settings
         </CardTitle>
@@ -119,11 +118,7 @@ export function ShippingSettings() {
               )}
             />
 
-            <Button
-              type="submit"
-              disabled={isPending}
-              className="bg-sage-600 hover:bg-sage-700"
-            >
+            <Button type="submit" disabled={isPending}>
               {isPending ? 'Saving...' : 'Save Changes'}
             </Button>
           </form>

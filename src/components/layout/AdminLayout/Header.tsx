@@ -1,21 +1,24 @@
 import { LogOut, User } from 'lucide-react'
 import { useAuth } from '@/features/auth/context/AuthContext'
 import { useLogout } from '@/features/auth/hooks/useLogout'
+import { ThemeToggle } from './ThemeToggle'
 
 export function Header() {
   const { user } = useAuth()
   const logout = useLogout()
 
   return (
-    <header className="h-16 bg-white border-b border-sage-gray-200 fixed top-0 right-0 left-64 z-10">
+    <header className="fixed left-64 right-0 top-0 z-10 h-16 border-b border-sage-gray-200 bg-card">
       <div className="h-full px-6 flex items-center justify-end">
         <div className="flex items-center gap-4">
+          <ThemeToggle />
+
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-sage-gold flex items-center justify-center">
-              <User className="w-5 h-5 text-white" />
+              <User className="w-5 h-5 text-sage-white" />
             </div>
             <div className="text-sm">
-              <p className="font-medium text-sage-black">{user?.name}</p>
+              <p className="font-medium text-card-foreground">{user?.name}</p>
               <p className="text-sage-gray-500">{user?.email}</p>
             </div>
           </div>

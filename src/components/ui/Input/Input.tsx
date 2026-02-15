@@ -42,14 +42,14 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label
             htmlFor={inputId}
-            className="mb-2 block text-sm font-medium text-gray-900 transition-colors"
+            className="mb-2 block text-sm font-medium text-foreground transition-colors"
           >
             {label}
           </label>
         )}
         <div className="relative">
           {leftIcon && (
-            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-muted-foreground">
               {leftIcon}
             </div>
           )}
@@ -58,11 +58,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             id={inputId}
             type={inputType}
             className={cn(
-              'block w-full rounded-lg border-2 border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder:text-gray-400',
+              'block w-full rounded-lg border-2 border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground',
               'transition-all duration-200',
               'focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10',
-              'hover:border-gray-300',
-              'disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 disabled:opacity-60',
+              'hover:border-sage-gray-400',
+              'disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground disabled:opacity-60',
               error && 'border-red-500 focus:border-red-500 focus:ring-red-500/10',
               leftIcon && 'pl-10',
               (rightIcon || (isPassword && showPasswordToggle)) && 'pr-10',
@@ -76,7 +76,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-600"
+              className="absolute inset-y-0 right-0 flex items-center pr-3 text-muted-foreground hover:text-foreground"
               tabIndex={-1}
               aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
             >
@@ -88,7 +88,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             </button>
           )}
           {rightIcon && !isPassword && (
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400">
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-muted-foreground">
               {rightIcon}
             </div>
           )}
@@ -102,7 +102,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           </p>
         )}
         {!error && helperText && (
-          <p id={helperId} className="mt-1.5 text-xs text-gray-500">
+          <p id={helperId} className="mt-1.5 text-xs text-muted-foreground">
             {helperText}
           </p>
         )}

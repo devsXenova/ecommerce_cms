@@ -2,9 +2,9 @@ import { LoginForm } from '../components/LoginForm'
 
 export function LoginPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sage-gray-50 to-sage-gray-100 flex items-center justify-center p-4">
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-background to-muted p-4">
       <div className="w-full max-w-md">
-        <div className="bg-white rounded-2xl shadow-elegant-lg p-8 animate-fade-in">
+        <div className="animate-fade-in rounded-2xl bg-card p-8 shadow-elegant-lg">
           <div className="text-center mb-8">
             <h1 className="text-3xl font-serif font-bold text-gradient-gold mb-2">
               Le Pas Sage

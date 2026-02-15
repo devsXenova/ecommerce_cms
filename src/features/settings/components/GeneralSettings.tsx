@@ -17,7 +17,6 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useSettings } from '../hooks/useSettings';
 import { useUpdateSettings } from '../hooks/useUpdateSettings';
-import type { GeneralSettings } from '../types/settings.types';
 
 const generalSettingsSchema = z.object({
   storeName: z.string().min(1, 'Store name is required'),
@@ -50,9 +49,9 @@ export function GeneralSettings() {
   }
 
   return (
-    <Card className="border-sage-200">
+      <Card className="border-sage-gray-200">
       <CardHeader>
-        <CardTitle className="text-sage-900 flex items-center gap-2">
+        <CardTitle className="flex items-center gap-2 text-foreground">
           <Store className="h-5 w-5 text-gold-600" />
           General Settings
         </CardTitle>
@@ -136,11 +135,7 @@ export function GeneralSettings() {
               )}
             />
 
-            <Button
-              type="submit"
-              disabled={isPending}
-              className="bg-sage-600 hover:bg-sage-700"
-            >
+            <Button type="submit" disabled={isPending}>
               {isPending ? 'Saving...' : 'Save Changes'}
             </Button>
           </form>

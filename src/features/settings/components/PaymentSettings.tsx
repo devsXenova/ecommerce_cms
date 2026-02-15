@@ -16,7 +16,6 @@ import {
 import { Input } from '@/components/ui/input';
 import { useSettings } from '../hooks/useSettings';
 import { useUpdateSettings } from '../hooks/useUpdateSettings';
-import type { PaymentSettings } from '../types/settings.types';
 
 const paymentSettingsSchema = z.object({
   mercadoPagoPublicKey: z.string().min(1, 'Public key is required'),
@@ -47,9 +46,9 @@ export function PaymentSettings() {
   }
 
   return (
-    <Card className="border-sage-200">
+      <Card className="border-sage-gray-200">
       <CardHeader>
-        <CardTitle className="text-sage-900 flex items-center gap-2">
+        <CardTitle className="flex items-center gap-2 text-foreground">
           <CreditCard className="h-5 w-5 text-gold-600" />
           Payment Settings
         </CardTitle>
@@ -92,18 +91,14 @@ export function PaymentSettings() {
               )}
             />
 
-            <div className="rounded-lg border border-gold-200 bg-gold-50 p-4">
-              <p className="text-sm text-sage-800">
+            <div className="rounded-lg border border-sage-gold/25 bg-sage-gold/10 p-4">
+              <p className="text-sm text-foreground">
                 <strong>Important:</strong> Keep your access token secure. Never share it publicly
                 or commit it to version control.
               </p>
             </div>
 
-            <Button
-              type="submit"
-              disabled={isPending}
-              className="bg-sage-600 hover:bg-sage-700"
-            >
+            <Button type="submit" disabled={isPending}>
               {isPending ? 'Saving...' : 'Save Changes'}
             </Button>
           </form>

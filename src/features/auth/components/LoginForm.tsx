@@ -34,7 +34,7 @@ export function LoginForm() {
           id="email"
           type="email"
           {...register('email')}
-          className="w-full px-4 py-3 border border-sage-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sage-gold focus:border-transparent transition-all"
+          className="w-full rounded-lg border border-sage-gray-300 bg-background px-4 py-3 text-foreground placeholder:text-sage-gray-500 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-sage-gold"
           placeholder="admin@lepasage.com"
         />
         {errors.email && (
@@ -50,7 +50,7 @@ export function LoginForm() {
           id="password"
           type="password"
           {...register('password')}
-          className="w-full px-4 py-3 border border-sage-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sage-gold focus:border-transparent transition-all"
+          className="w-full rounded-lg border border-sage-gray-300 bg-background px-4 py-3 text-foreground placeholder:text-sage-gray-500 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-sage-gold"
           placeholder="••••••••"
         />
         {errors.password && (
@@ -69,7 +69,7 @@ export function LoginForm() {
       <button
         type="submit"
         disabled={isPending}
-        className="w-full py-3 px-4 bg-sage-black text-white rounded-lg hover:bg-sage-gray-900 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-medium"
+        className="w-full rounded-lg bg-sage-black px-4 py-3 font-medium text-sage-white transition-all hover:bg-sage-gray-900 disabled:cursor-not-allowed disabled:opacity-50"
       >
         {isPending ? 'Iniciando sesión...' : 'Iniciar Sesión'}
       </button>
