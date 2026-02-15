@@ -20,6 +20,8 @@ export function CustomersReport() {
     from: subDays(new Date(), 30),
     to: new Date(),
   });
+  const statsCardClass =
+    'border-border bg-[linear-gradient(145deg,rgb(var(--card))_0%,rgb(var(--muted))_100%)] shadow-elegant';
 
   const { data, isLoading } = useCustomersReport({
     startDate: dateRange?.from ? format(dateRange.from, 'yyyy-MM-dd') : '',
@@ -42,19 +44,19 @@ export function CustomersReport() {
         className="max-w-sm"
       />
 
-      <Card className="border-sage-200 bg-gradient-to-br from-white to-sage-50">
+      <Card className={statsCardClass}>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium text-sage-900">Total Customers</CardTitle>
+          <CardTitle className="text-sm font-medium text-muted-foreground">Total Customers</CardTitle>
           <Users className="h-4 w-4 text-sage-600" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold text-sage-900">{data.totalCustomers}</div>
+          <div className="text-2xl font-bold text-card-foreground">{data.totalCustomers}</div>
         </CardContent>
       </Card>
 
-      <Card className="border-sage-200">
+      <Card className="border-border bg-card shadow-elegant">
         <CardHeader>
-          <CardTitle className="text-sage-900 flex items-center gap-2">
+          <CardTitle className="flex items-center gap-2 text-card-foreground">
             <Users className="h-5 w-5 text-gold-600" />
             Top Customers
           </CardTitle>
@@ -89,9 +91,9 @@ export function CustomersReport() {
         </CardContent>
       </Card>
 
-      <Card className="border-sage-200">
+      <Card className="border-border bg-card shadow-elegant">
         <CardHeader>
-          <CardTitle className="text-sage-900 flex items-center gap-2">
+          <CardTitle className="flex items-center gap-2 text-card-foreground">
             <UserPlus className="h-5 w-5 text-gold-600" />
             New Customers
           </CardTitle>

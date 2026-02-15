@@ -20,6 +20,10 @@ export function SalesReport() {
     from: subDays(new Date(), 30),
     to: new Date(),
   });
+  const statsCardClass =
+    'border-border bg-[linear-gradient(145deg,rgb(var(--card))_0%,rgb(var(--muted))_100%)] shadow-elegant';
+  const statsCardAccentClass =
+    'border-[rgb(var(--sage-gold)/0.35)] bg-[linear-gradient(145deg,rgb(var(--card))_0%,rgb(var(--sage-gold-light)/0.18)_100%)] shadow-gold';
 
   const { data, isLoading } = useSalesReport({
     startDate: dateRange?.from ? format(dateRange.from, 'yyyy-MM-dd') : '',
@@ -43,44 +47,44 @@ export function SalesReport() {
       />
 
       <div className="grid gap-4 md:grid-cols-3">
-        <Card className="border-sage-200 bg-gradient-to-br from-white to-sage-50">
+        <Card className={statsCardClass}>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-sage-900">Total Sales</CardTitle>
+            <CardTitle className="text-sm font-medium text-muted-foreground">Total Sales</CardTitle>
             <DollarSign className="h-4 w-4 text-sage-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-sage-900">
+            <div className="text-2xl font-bold text-card-foreground">
               {formatCurrency(data.totalSales)}
             </div>
           </CardContent>
         </Card>
 
-        <Card className="border-gold-200 bg-gradient-to-br from-white to-gold-50">
+        <Card className={statsCardAccentClass}>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-sage-900">Total Orders</CardTitle>
+            <CardTitle className="text-sm font-medium text-muted-foreground">Total Orders</CardTitle>
             <ShoppingCart className="h-4 w-4 text-gold-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-sage-900">{data.totalOrders}</div>
+            <div className="text-2xl font-bold text-card-foreground">{data.totalOrders}</div>
           </CardContent>
         </Card>
 
-        <Card className="border-sage-200 bg-gradient-to-br from-white to-sage-50">
+        <Card className={statsCardClass}>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-sage-900">Average Order</CardTitle>
+            <CardTitle className="text-sm font-medium text-muted-foreground">Average Order</CardTitle>
             <TrendingUp className="h-4 w-4 text-sage-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-sage-900">
+            <div className="text-2xl font-bold text-card-foreground">
               {formatCurrency(data.averageOrderValue)}
             </div>
           </CardContent>
         </Card>
       </div>
 
-      <Card className="border-sage-200">
+      <Card className="border-border bg-card shadow-elegant">
         <CardHeader>
-          <CardTitle className="text-sage-900">Daily Sales</CardTitle>
+          <CardTitle className="text-card-foreground">Daily Sales</CardTitle>
           <CardDescription>Breakdown of sales by day</CardDescription>
         </CardHeader>
         <CardContent>

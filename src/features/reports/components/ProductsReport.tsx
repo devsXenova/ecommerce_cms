@@ -24,9 +24,9 @@ export function ProductsReport() {
 
   return (
     <div className="space-y-6">
-      <Card className="border-sage-200">
+      <Card className="border-border bg-card shadow-elegant">
         <CardHeader>
-          <CardTitle className="text-sage-900 flex items-center gap-2">
+          <CardTitle className="flex items-center gap-2 text-card-foreground">
             <Package className="h-5 w-5 text-gold-600" />
             Top Selling Products
           </CardTitle>

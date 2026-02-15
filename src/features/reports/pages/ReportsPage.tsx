@@ -10,13 +10,13 @@ export function ReportsPage() {
       <div className="flex items-center gap-3">
         <BarChart3 className="h-8 w-8 text-gold-600" />
         <div>
-          <h1 className="text-3xl font-bold text-sage-900">Reports</h1>
+          <h1 className="text-3xl font-bold text-foreground">Reports</h1>
           <p className="text-muted-foreground">View and analyze your business performance</p>
         </div>
       </div>
 
       <Tabs defaultValue="sales" className="space-y-6">
-        <TabsList className="grid w-full max-w-md grid-cols-3">
+        <TabsList className="grid w-full max-w-md grid-cols-3 border-border bg-muted/80">
           <TabsTrigger value="sales">Sales</TabsTrigger>
           <TabsTrigger value="products">Products</TabsTrigger>
           <TabsTrigger value="customers">Customers</TabsTrigger>
